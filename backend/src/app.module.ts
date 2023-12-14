@@ -4,7 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 
 import { AppService } from 'src/app.service';
 import { CryptoMetricsModule } from 'src/crypto-metrics/crypto-metrics.module';
-import { ExchangeModule } from 'src/exchange/exchange.module';
+import { ExchangeModule } from 'src/exchanges/exchange.module';
 import { CoinGeckoExceptionFilter } from "src/filters/exception.filter";
 import { APP_FILTER } from "@nestjs/core";
 
