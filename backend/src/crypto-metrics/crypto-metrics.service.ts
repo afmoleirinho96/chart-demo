@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
-import axiosInstance from "src/utils/http/axios.config";
+import axiosInstance from "src/utils/axios.config";
 
 @Injectable()
 export class CryptoMetricsService {
@@ -24,7 +24,7 @@ export class CryptoMetricsService {
       throw new NotFoundException(`Token with id ${id} not found!`);
     }
     const response = await axiosInstance.get(`coins/${id}/ohlc`, {
-      params: { vs_currency: "usd", days: "90" },
+      params: { vs_currency: "usd", days: "180" },
     });
     return response.data;
   }

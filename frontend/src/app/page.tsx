@@ -3,7 +3,7 @@ import { CryptocurrencyProvider } from "@/app/contexts/cryptocurrency.context";
 import ChartWrapper from "@/app/pages/chart-wrapper/chart-wrapper";
 import { ThemeProvider } from "@/app/contexts/theme.context";
 import React, { FC } from "react";
-import "./utils/highcharts.config";
+import "../app/utils/highcharts.config"
 
 const Home: FC = () => {
   return (

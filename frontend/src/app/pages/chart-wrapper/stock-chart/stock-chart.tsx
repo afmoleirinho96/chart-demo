@@ -76,7 +76,6 @@ const StockChart = () => {
       },
     },
     rangeSelector: {
-      selected: 5,
       inputBoxStyle: {
         right: "80px",
       },

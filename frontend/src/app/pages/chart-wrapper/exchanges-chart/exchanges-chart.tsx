@@ -45,7 +45,7 @@ const ExchangesChart = () => {
               backgroundColor: "transparent",
             },
             title: {
-              text: "Total 24-Hour BTC Trading Volume by top 20 Exchange"
+              text: "BTC Trading Volume",
             },
             subtitle: {
               useHTML: true,
@@ -53,7 +53,7 @@ const ExchangesChart = () => {
                     <br/>
                     <b style="margin-top:16px; font-size: 18px; color:rgba(19,103,38,0.75); font-weight:700">${(
                       exchanges.topExchangesByVolume.reduce((acc, exchange) => acc + exchange.y, 0) / 1e6
-                    ).toFixed(2)} Million</b>
+                    ).toFixed(2)} Million (BTC)</b>
                   </p>`,
               floating: true,
               verticalAlign: "middle",
@@ -63,6 +63,8 @@ const ExchangesChart = () => {
               useHTML: true,
               formatter: function () {
                 const valueInThousands = (this.point.y / 1e3).toFixed(2);
+                const total = exchanges.topExchangesByVolume.reduce((acc, exchange) => acc + exchange.y, 0)
+                const percentage = this.point.y / total * 100;
                 let yearInfo = this.point.year
                   ? `<p style="text-align: end; font-size:10px; color:#9b9797; font-style:italic;">Since ${this.point.year}</p>`
                   : "";
@@ -73,7 +75,10 @@ const ExchangesChart = () => {
                 <p style="text-wrap:wrap; padding-right:4px;">${this.point.name}</p>
               </div>
               <div style="display:flex; flex-direction:column; gap:12px; margin-top:8px;">
-                <b style="margin-top:4px;">${valueInThousands} K</b>
+              <div style="display:flex; align-items: center; justify-items: center; gap:8px;">
+                <p style="font-weight:bold;">${valueInThousands} K</p> -
+                <p style="color:gray;">${percentage.toFixed(2)} % </p>
+              </div>
                 ${yearInfo}
               </div>
             </div>`;
@@ -104,7 +109,7 @@ const ExchangesChart = () => {
           }}
         />
         <div className="flex flex-col items-center justify-center gap-y-2">
-          <p className="italic opacity tracking-[0.5px] text-slate-600 font-medium text-md">Displaying top 20 exchanges by 24-hour trading volume</p>
+          <p className="italic opacity tracking-[0.5px] text-slate-600 font-medium text-md">Displaying top 20 exchanges by 24-hour trading volume in BTC</p>
           <p className="text-xs font-semibold text-center">
             Number of exchanges analyzed: <span className="font-normal">{exchanges.count}</span>
           </p>

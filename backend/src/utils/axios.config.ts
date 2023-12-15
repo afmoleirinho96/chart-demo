@@ -9,7 +9,7 @@ const configService = new ConfigService();
 
 const headers = {
   "Content-Type": "application/json",
-  API_KEY: `${configService.get("COINGECKO_API_KEY")}`,
+  "x-cg-pro-api-key": `${configService.get("COINGECKO_API_KEY")}`,
 };
 
 const axiosInstance = axios.create({

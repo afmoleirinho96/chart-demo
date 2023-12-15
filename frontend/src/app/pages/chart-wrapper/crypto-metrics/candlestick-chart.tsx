@@ -9,7 +9,6 @@ import stockInit from "highcharts/modules/stock";
 import { getCandlestickData } from "@/app/services/crypto-metrics/crypto-metrics.service";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { Tooltip } from "@mui/material";
-import BrandDark from "highcharts/themes/brand-dark";
 
 // Initialize modules
 if (typeof Highcharts === "object") {
@@ -18,7 +17,6 @@ if (typeof Highcharts === "object") {
   HC_exporting(Highcharts);
 }
 
-BrandDark(Highcharts);
 
 interface CandlestickChartProps {
   currentToken: string;
@@ -74,7 +72,7 @@ const CandlestickChart: FC<CandlestickChartProps> = ({ currentToken }) => {
   return (
     <div className="flex flex-col w-full justify-between gap-y-2">
       <p className="flex items-center text-slate-600 font-medium text-md">
-        Visualize the opening, closing, lowest, and highest values, over the <span className="font-bold ml-1"> past 90 days</span>.
+        Visualize the opening, closing, lowest, and highest values, over the <span className="font-bold ml-1"> past 180 days</span>.
         <Tooltip
           title="Given API constraints, the data granularity for 31 days and beyond is 4 days "
         >

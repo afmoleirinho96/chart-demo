@@ -1,4 +1,4 @@
-import axiosInstance from "src/utils/http/axios.config";
+import axiosInstance from "src/utils/axios.config";
 import { Injectable } from "@nestjs/common";
 import { ExchangeInfo, ExchangeVolumeData } from "src/models/exchange";
 

@@ -23,12 +23,15 @@ export class CoinGeckoExceptionFilter implements ExceptionFilter {
           : (exceptionResponse as any).message || "Internal server error";
     }
 
-    response.status(status).json({
+    const errorResponse = {
       statusCode: status,
       timestamp: new Date().toISOString(),
       path: request.url,
       message,
       reason
-    });
+    }
+
+    console.error(errorResponse);
+    response.status(status).json(errorResponse);
   }
 }

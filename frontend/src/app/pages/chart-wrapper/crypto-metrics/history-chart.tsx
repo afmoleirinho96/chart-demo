@@ -46,7 +46,7 @@ const HistoryChart: FC<HistoryChartProps> = ({ currentToken = DEFAULT_TOKEN }) =
 
   useEffect(() => {
     updateYAxis();
-  }, [viewType]);
+  }, [viewType, tokenToUsdMetrics]);
 
   useEffect(() => {
     const getTokenDetails = async () => {
@@ -145,40 +145,39 @@ const HistoryChart: FC<HistoryChartProps> = ({ currentToken = DEFAULT_TOKEN }) =
       },
       {
         type: "flags",
+        name: "Extreme",
         accessibility: {
           exposeAsGroupOnly: true,
           description: "Flagged events.",
         },
-      ...(maxMinDataMemo) && {data:
-          viewType === ViewType.PRICE_HISTORY
-            ? [
-                {
-                  x: maxMinDataMemo.minPrice.timestamp,
-                  title: "Min Price",
-                  text: `${maxMinDataMemo.minPrice.value.toLocaleString()}`,
-                },
-                {
-                  x: maxMinDataMemo.maxPrice.timestamp,
-                  title: "Max Price",
-                  text: `${maxMinDataMemo.maxPrice.value.toLocaleString()}`,
-                },
-              ]
-            : [
-                {
-                  x: maxMinDataMemo.minMarketCap.timestamp,
-                  title: "Min Market Cap",
-                  text: `${maxMinDataMemo.minMarketCap.value.toLocaleString()}`,
-                },
-                {
-                  x: maxMinDataMemo.maxMarketCap.timestamp,
-                  title: "Max Market Cap",
-                  text: `${maxMinDataMemo.maxMarketCap.value.toLocaleString()}`,
-                },
-              ],
-        onSeries: "historySeries",
-        shape: "circlepin",
-        width: 96,
-      }},
+        ...(maxMinDataMemo && {
+          data:
+            viewType === ViewType.PRICE_HISTORY
+              ? [
+                  {
+                    x: maxMinDataMemo.minPrice.timestamp,
+                    title: "Min Price",
+                  },
+                  {
+                    x: maxMinDataMemo.maxPrice.timestamp,
+                    title: "Max Price",
+                  },
+                ]
+              : [
+                  {
+                    x: maxMinDataMemo.minMarketCap.timestamp,
+                    title: "Min Market Cap",
+                  },
+                  {
+                    x: maxMinDataMemo.maxMarketCap.timestamp,
+                    title: "Max Market Cap",
+                  },
+                ],
+          onSeries: "historySeries",
+          shape: "circlepin",
+          width: 96,
+        }),
+      },
     ],
     exporting: {
       chartOptions: {
