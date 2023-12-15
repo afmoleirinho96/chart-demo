@@ -6,9 +6,7 @@ import { ExchangeInfo, ExchangeVolumeData } from "src/models/exchange";
 export class ExchangeService {
   async getTopExchangesByVolume(): Promise<ExchangeVolumeData> {
 
-    /**
-     * TODO - Improve the mechanism to know how many exchanges exist beforehand, so there's no need to hardcode pages.
-     */
+    // TODO - Improve the mechanism to know how many exchanges exist beforehand, so there's no need to hardcode pages.
     const urls = [
       "exchanges?per_page=250&page=1",
       "exchanges?per_page=250&page=2",

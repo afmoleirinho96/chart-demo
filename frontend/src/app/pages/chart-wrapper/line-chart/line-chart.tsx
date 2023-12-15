@@ -12,8 +12,8 @@ interface LineChartProps {
 const LineChart: React.FC<LineChartProps> = ({ theme }) => {
 
 	const [data, setData] = useState<number[] | null>(null);
-
 	const length = 10_000;
+
 	useEffect(() => {
 		const currentTheme = themes[theme];
 		currentTheme(Highcharts);
