@@ -65,7 +65,7 @@ $ npm run dev
 
 ### API Documentation
 The Chart Demo API is documented using Swagger.
-To explore the API and view the available endpoints, you can visit http://localhost:<port>/api in your browser after starting the backend server. 
+To explore the API and view the available endpoints, you can visit http://localhost:3000/api, or whatever port you chose for the backend, in your browser after starting the backend server. 
 
 Since I have the backend port pre-defined as 3100, you would see Swagger running on http://localhost:3100/api
  - This can be changed  under `main.ts` file located in the backend folder.
